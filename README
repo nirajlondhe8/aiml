@@ -1,28 +1,43 @@
-#Summary of Key Points
-#Year of Make Distribution:
+# Summary of Key Points
 
-#The majority of cars in the dataset were manufactured between 2000 and 2020.
-#Fuel Type and Outliers:
+## Year of Make Distribution
 
-#Fuel type 2 shows outliers that are evenly distributed between left and right skewness.
-#Drive Type and Outliers:
+- The majority of cars in the dataset were manufactured between 2000 and 2020.
 
-#Cars with drive type 0 exhibit right-skewed outliers.
-#Odometer Reading and Price:
+## Fuel Type and Outliers
 
-#Odometer reading has the strongest correlation (0.01) with car price among the variables analyzed.
-#Year and Price:
+- Fuel type 2 shows outliers that are evenly distributed between left and right skewness.
 
-#Year of manufacture has a relatively strong negative correlation (-0.004) with car price.
-#Other Features and Price:
+## Drive Type and Outliers
 
-#Features like manufacturer, type, cylinders, and drive show similar weak correlations (~0.002) with car price.
-#Features with Weak Correlation:
+- Cars with drive type 0 exhibit right-skewed outliers.
 
-#Features such as size, paint color, and region have very weak correlations (~0.001) with car price, suggesting they may not significantly impact pricing decisions.
-#Recommendations
-#Focus on Odometer and Year: Given their stronger correlations with price, prioritize these features in pricing and valuation models.
+## Odometer Reading and Price
 
-#Consider Outlier Handling: Develop strategies to handle outliers in fuel type and drive type to improve model accuracy.
+- Odometer reading has the strongest correlation (0.01) with car price among the variables analyzed.
 
-#Feature Selection: Delete features with very weak correlations (e.g., size, paint color, region) from further analysis to streamline modeling efforts.
+## Year and Price
+
+- Year of manufacture has a relatively strong negative correlation (-0.004) with car price.
+
+## Other Features and Price
+
+- Features like manufacturer, type, cylinders, and drive show similar weak correlations (~0.002) with car price.
+
+## Features with Weak Correlation
+
+- Features such as size, paint color, and region have very weak correlations (~0.001) with car price, suggesting they may not significantly impact pricing decisions.
+
+# Recommendations
+
+## Focus on Odometer and Year
+
+- Given their stronger correlations with price, prioritize these features in pricing and valuation models.
+
+## Consider Outlier Handling
+
+- Develop strategies to handle outliers in fuel type and drive type to improve model accuracy.
+
+## Feature Selection
+
+- Delete features with very weak correlations (e.g., size, paint color, region) from further analysis to streamline modeling efforts.
