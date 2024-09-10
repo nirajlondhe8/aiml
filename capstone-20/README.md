@@ -1,7 +1,7 @@
 # Anomaly Detection and Model Comparison in Network Data
 
 **Author**  
-*Your Name*
+Niraj Londhe
 
 #### Executive Summary
 This project focuses on detecting anomalies in network data using multiple classification models and grid search to identify optimal hyperparameters. The models compared include Logistic Regression, Random Forest, and Support Vector Machine (SVM). The project also involves evaluating model performance through accuracy metrics and visualization.
