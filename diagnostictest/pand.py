@@ -3,11 +3,11 @@ class Board:
         if city_count <= 0:
             raise ValueError("Board needs at least one city")
 
-        if epicenter < 1 or epicenter > city_count:
+        if epicenter < 0 or epicenter >= city_count:
             raise IndexError("epicenter city number out of range")
 
         self.size = city_count
-        self.epicenter = epicenter - 1
+        self.epicenter = epicenter
         self.day = 0
 
         self.states = ["."] * self.size
@@ -18,11 +18,8 @@ class Board:
 
     def move(self, city_number):
         index = self._city_index(city_number)
-
         caseload = self._caseload(index)
-
         self._spread()
-
         return caseload
 
     def infected_city_numbers(self):
@@ -30,7 +27,7 @@ class Board:
 
         for index in range(self.size):
             if self.states[index] == "X":
-                infected.append(index + 1)
+                infected.append(index)
 
         return infected
 
@@ -61,10 +58,11 @@ class Board:
         return self.day - self.infected_at[index] + 1
 
     def _city_index(self, city_number):
-        if city_number < 1 or city_number > self.size:
+        if city_number < 0 or city_number >= self.size:
             raise IndexError("city number out of range")
 
-        return city_number - 1
+        return city_number
+
 
 class Solver:
     def __init__(self, board):
@@ -72,22 +70,19 @@ class Solver:
         self.inspections = []
 
     def solve(self):
-        possible_epicenters = set(range(1, self.board.size + 1))
+        possible_epicenters = set(range(self.board.size))
         time_step = 0
-        #optimizes the solver by limiting how many times it can call move().
-        max_moves = self.board.size
+        #this is to optimize the number of moves, had to tune it, started with *2 , then +1
+        max_moves = self.board.size 
 
         while len(possible_epicenters) > 1 and time_step < max_moves:
-            city_number = (time_step % self.board.size) + 1
-
+            city_number = time_step % self.board.size
             caseload = self.board.move(city_number)
-
             self.inspections.append((city_number, time_step, caseload))
 
             possible_epicenters = {
                 epicenter
                 for epicenter in possible_epicenters
-                # Keep this epicenter only if it would produce the same caseload.
                 if self._expected_caseload(epicenter, city_number, time_step) == caseload
             }
 
@@ -105,4 +100,3 @@ class Solver:
             return 0
 
         return time_step - distance + 1
-
